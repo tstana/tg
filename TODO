@@ -1,5 +1,9 @@
+- think of a more modular way of generating the file?
+-- e.g.: have a "generic" header & add comments to it
+-- remove other comments (they may be redundant)
+-- add $institute or $company variable
+-- add UCF file to template
 - see where DOC is
 - see whether it makes sense to add DOC or add HOWTO
 - create said HOWTO
-- add $institute or $company variable
 

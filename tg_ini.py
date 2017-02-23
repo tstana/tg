@@ -30,6 +30,6 @@
 #  TODO: -
 #===============================================================================
 
-INI_NAME = "INI: Theodor Stana"
-INI_MAIL = "INI: theodor.stana@gmail.com"
+INI_NAME = "Theodor Stana"
+INI_MAIL = "theodor.stana@gmail.com"
 

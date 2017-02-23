@@ -1,8 +1,7 @@
 #===============================================================================
-# CERN (BE-CO-HT)
 # Initialization file for Template Generator
 #===============================================================================
-# author: Theodor Stana (t.stana@cern.ch)
+# author: Theodor Stana (theodor.stana@gmail.com)
 #
 # date of creation: 2012-11-22
 #
@@ -31,6 +30,6 @@
 #  TODO: -
 #===============================================================================
 
-INI_NAME = "Theodor Stana"
-INI_MAIL = "t.stana@cern.ch"
+INI_NAME = "INI: Theodor Stana"
+INI_MAIL = "INI: theodor.stana@gmail"
 

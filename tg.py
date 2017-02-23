@@ -1,9 +1,8 @@
 #! /usr/bin/env python
 #===============================================================================
-# CERN (BE-CO-HT)
 # TG -- Template Generator
 #===============================================================================
-# author: Theodor Stana (t.stana@cern.ch)
+# author: Theodor Stana (theodor.stana@gmail.com)
 #
 # date of creation: 2012-10-xx
 #

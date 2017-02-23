@@ -31,5 +31,5 @@
 #===============================================================================
 
 INI_NAME = "INI: Theodor Stana"
-INI_MAIL = "INI: theodor.stana@gmail"
+INI_MAIL = "INI: theodor.stana@gmail.com"
 

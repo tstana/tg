@@ -4,9 +4,9 @@
 #===============================================================================
 # author: Theodor Stana (theodor.stana@gmail.com)
 #
-# date of creation: 2012-10-xx
+# date of creation: 2013-10-24
 #
-# version: 1.2
+# version: 1.3
 #
 # description:
 #   TG can be used to generate source files for various programming languages.
@@ -44,17 +44,7 @@
 # received a copy of the GNU Lesser General Public License along with this
 # source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
 #===============================================================================
-# last changes:
-#   2012-10-xx  Theodor Stana   t.stana@cern.ch   File created
-#   2012-11-22  Theodor Stana   t.stana@cern.ch   Added Python support and
-#                                                 comments. Also added
-#                                                 possibility of using a Python
-#                                                 init file, to specify default
-#                                                 values for author name and mail.
-#                                                 Version is now 1.2
-#===============================================================================
-#  TODO: -
-#===============================================================================
+
 from string import Template
 from time import strftime, gmtime
 import os
@@ -173,6 +163,8 @@ def makevhd():
   foutp.write(hdl)
   foutp.close()
 
+  print 'New file "' + foutpname[2:] + '" created.'
+
 
 #===============================================================================
 # makec(opt)
@@ -270,6 +262,8 @@ def makec(opt):
   foutp.write(s)
   foutp.close()
 
+  print 'New file "' + foutpname[2:] + '" created.'
+
 #===============================================================================
 # makepy()
 #
@@ -354,6 +348,8 @@ def makepy():
   foutp.write(s)
   foutp.close()
 
+  print 'New file "' + foutpname[2:] + '" created.'
+
 #===============================================================================
 # "Main function"
 #
@@ -387,6 +383,4 @@ Your option: """);
     makepy()
   else:
     makec(opt)
-
-  raw_input('Press any key to finish...')
 

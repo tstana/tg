@@ -64,20 +64,18 @@ end architecture $arch;
 
 TEMPL_CHDR = """/*
  *==============================================================================
- * $ftype file for $long_entity_name
+ * $long_entity_name
+ *
+ * $ftype file
  *==============================================================================
  *
  * author: $name ($mail)
  *
  * date of creation: $date
  *
- * version: 1.0
- *
  * description:
  *
- * dependencies:
- *
- * references:
+ *      TODO: Add description here...
  *
  *==============================================================================
  * GNU LESSER GENERAL PUBLIC LICENSE
@@ -91,11 +89,6 @@ TEMPL_CHDR = """/*
  * See the GNU Lesser General Public License for more details. You should have
  * received a copy of the GNU Lesser General Public License along with this
  * source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
- *==============================================================================
- * last changes:
- *    $date   $name     File created
- *==============================================================================
- * TODO: -
  *==============================================================================
  */
 
@@ -122,20 +115,18 @@ TEMPL_CHDR = """/*
 
 TEMPL_CSRC = """/*
  *==============================================================================
- * $ftype file for $long_entity_name
+ * $long_entity_name
+ *
+ * $ftype file
  *==============================================================================
  *
  * author: $name ($mail)
  *
  * date of creation: $date
  *
- * version: 1.0
- *
  * description:
  *
- * dependencies:
- *
- * references:
+ *      TODO: Add description here...
  *
  *==============================================================================
  * GNU LESSER GENERAL PUBLIC LICENSE
@@ -149,11 +140,6 @@ TEMPL_CSRC = """/*
  * See the GNU Lesser General Public License for more details. You should have
  * received a copy of the GNU Lesser General Public License along with this
  * source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
- *==============================================================================
- * last changes:
- *    $date   $name     File created
- *==============================================================================
- * TODO: -
  *==============================================================================
  */
 
@@ -180,13 +166,10 @@ TEMPL_PY = """#=================================================================
 #
 # date of creation: $date
 #
-# version: 1.0
-#
 # description:
 #
-# dependencies:
+#       TODO: Add description here...
 #
-# references:
 #===============================================================================
 # GNU LESSER GENERAL PUBLIC LICENSE
 #===============================================================================
@@ -200,12 +183,6 @@ TEMPL_PY = """#=================================================================
 # received a copy of the GNU Lesser General Public License along with this
 # source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
 #===============================================================================
-# last changes:
-#    $date    $name     File created
-#===============================================================================
-#  TODO: -
-#===============================================================================
-
 
 #===============================================================================
 # <your func name here>

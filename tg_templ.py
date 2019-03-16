@@ -36,6 +36,21 @@ end entity $entity;
 architecture $arch of $entity is
 
   --============================================================================
+  -- Function declarations
+  --============================================================================
+  -- log2
+  function log2_ceil(N : natural) return positive is
+  begin
+    if N <= 2 then
+      return 1;
+    elsif N mod 2 = 0 then
+      return 1 + log2_ceil(N/2);
+    else
+      return 1 + log2_ceil((N+1)/2);
+    end if;
+  end;
+
+  --============================================================================
   -- Type declarations
   --============================================================================
 

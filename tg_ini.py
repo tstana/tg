@@ -24,12 +24,5 @@
 # received a copy of the GNU Lesser General Public License along with this
 # source; if not, download it from http://www.gnu.org/licenses/lgpl-2.1.html
 #===============================================================================
-# last changes:
-#    2012-11-22    Theodor Stana     t.stana@cern.ch     File created
-#===============================================================================
-#  TODO: -
-#===============================================================================
 
-INI_NAME = "Theodor Stana"
-INI_MAIL = "theodor.stana@gmail.com"
-
+INI_NAME = "YOUR COMPANY HERE"

@@ -23,11 +23,6 @@
 #   the user leaves these fields blank when prompted for them, TG uses the
 #   defaults defined in the INI file.
 #
-#   In the current version, the following languages are supported:
-#     - VHDL
-#     - C (sources and headers)
-#     - Python
-#
 # dependencies:
 #   Various Python stdlib modules, as can be seen below.
 #
@@ -57,11 +52,6 @@ except ImportError:
   INI_NAME = ""
   INI_MAIL = ""
 
-try:
-  import pyreadline as readline
-except ImportError:
-  import readline
-
 
 OPT_CSRC = 2
 OPT_CHDR = 3
@@ -70,8 +60,8 @@ OPT_CHDR = 3
 def makeini():
   path = ''
   while not os.path.exists(path):
-    print 'No specified path to template files exists!'
-    path = raw_input('Please specify a path (relative or absolute) to your templates: ')
+    print('No specified path to template files exists!')
+    path = input('Please specify a path (relative or absolute) to your templates: ')
 
   if not path.endswith(os.pathsep):
     path += os.sep
@@ -99,60 +89,41 @@ def makeini():
 #
 # Then the user is asked to input several details from the command line. These
 # are then substituted in the string template and the appropriate file is
-# generated. The following details are requested from the user. The variable
-# name in the string template is given for reference, in case the reader wants
-# to change the template.
-#
-# +-------------------+----------------------------------------------------+
-# |     Variable      |        Comments                                    |
-# +-------------------+----------------------------------------------------+
-# | $long_entity_name | The long name of the current design                |
-# | $name             | The author's name. If the user supplise none, the  |
-# |                   | default supplied in tg_ini.py is used.             |
-# | $mail             | The author's e-mail. If the user supplise none,    |
-# |                   | the default supplied in tg_ini.py is used.         |
-# | $arch             | The name of the architecture                       |
-# | $entity           | The name of the VHDL module. This dictates (as the |
-# |                   | prompt suggests) the entity name, as well as the   |
-# |                   | file name.                                         |
-# +-------------------+----------------------------------------------------+
+# generated.
 #===============================================================================
 def makevhd():
 
   # Create a string object based on the template
   vhd  = Template(TEMPL_VHD)
 
-  # Get the current GMT time in the format YYYY-MM-DD
+  # Get the current GMT in the format YYYY-MM-DD
   date = strftime("%Y-%m-%d", gmtime())
+  year = str(gmtime().tm_year)
 
   # Prompt the user for details relevant to the design
-  long_entity_name = raw_input('Verbose name of the design? ')
+  design_name = input('Verbose name of the design? ')
 
-  name   = raw_input('Your name? (%s) ' % INI_NAME)
+  name = input('Company name (%s): ' % INI_NAME)
   if (name == ""):
     name = INI_NAME
 
-  mail   = raw_input('Your e-mail? (%s) ' % INI_MAIL)
-  if (mail == ""):
-    mail = INI_MAIL
-
   entity = ""
   while (entity == ""):
-    entity = raw_input("Entity name? ")
+    entity = input("Entity name? ")
 
-  arch = ""
-  while (arch == ""):
-    arch = raw_input("Architecture name? ")
+  arch = input("Architecture name (arch): ")
+  if (arch == ""):
+    arch = "arch"
 
   # Create a new dictionary to store the user's details for changing the template
   d = {}
 
-  d['long_entity_name'] = long_entity_name
-  d['name']   = name
-  d['mail']   = mail
-  d['date']   = date
-  d['entity'] = entity
-  d['arch']   = arch
+  d['design_name'] = design_name
+  d['company'] = name
+  d['date']    = date
+  d['year']    = year
+  d['entity']  = entity
+  d['arch']    = arch
 
   # Substitute the dictionary fields in the template
   hdl = vhd.substitute(d)
@@ -163,7 +134,7 @@ def makevhd():
   foutp.write(hdl)
   foutp.close()
 
-  print 'New file "' + foutpname[2:] + '" created.'
+  print('New file "' + foutpname[2:] + '" created.')
 
 
 #===============================================================================
@@ -212,20 +183,20 @@ def makec(opt):
   date = strftime("%Y-%m-%d", gmtime())
 
   # Prompt the user for details relevant to the design
-  long_entity_name = raw_input('Verbose name of the design? ')
+  long_entity_name = input('Verbose name of the design? ')
 
-  name   = raw_input('Your name? (%s) ' % INI_NAME)
+  name   = input('Your name? (%s) ' % INI_NAME)
   if (name == ""):
     name = INI_NAME
 
-  mail   = raw_input('Your e-mail? (%s) ' % INI_MAIL)
+  mail   = input('Your e-mail? (%s) ' % INI_MAIL)
   if (mail == ""):
     mail = INI_MAIL
 
   # Prompt the user for the filename
   fname = ""
   while (fname == ""):
-    fname = raw_input("Filename? ")
+    fname = input("Filename? ")
 
   # Create a new dictionary to store the user's details for changing the template
   d = {}
@@ -262,7 +233,7 @@ def makec(opt):
   foutp.write(s)
   foutp.close()
 
-  print 'New file "' + foutpname[2:] + '" created.'
+  print('New file "' + foutpname[2:] + '" created.')
 
 #===============================================================================
 # makepy()
@@ -307,20 +278,20 @@ def makepy():
   date = strftime("%Y-%m-%d", gmtime())
 
   # Prompt the user for details relevant to the design
-  long_entity_name = raw_input('Verbose name of the design? ')
+  long_entity_name = input('Verbose name of the design? ')
 
-  name   = raw_input('Your name? (%s) ' % INI_NAME)
+  name   = input('Your name? (%s) ' % INI_NAME)
   if (name == ""):
     name = INI_NAME
 
-  mail   = raw_input('Your e-mail? (%s) ' % INI_MAIL)
+  mail   = input('Your e-mail? (%s) ' % INI_MAIL)
   if (mail == ""):
     mail = INI_MAIL
 
   # Prompt the user for the filename
   fname = ""
   while (fname == ""):
-    fname = raw_input("Filename? ")
+    fname = input("Filename? ")
 
   # Create a new dictionary to store the user's details for changing the template
   d = {}
@@ -348,7 +319,7 @@ def makepy():
   foutp.write(s)
   foutp.close()
 
-  print 'New file "' + foutpname[2:] + '" created.'
+  print('New file "' + foutpname[2:] + '" created.')
 
 #===============================================================================
 # "Main function"
@@ -358,21 +329,20 @@ def makepy():
 #===============================================================================
 if __name__ == "__main__":
 
-  # print os.getcwd()
-
   opt = 10
 
   # Ask the user for which type of file he/she wants to generate. The menu
   # persists if a wrong option is given.
   while (opt > 4):
-    opt = input("""Hit:
+    opt = int(input("""Enter:
 
   (1) for VHDL source
   (2) for C source
   (3) for C header
   (4) for Python source
   (0) to quit
-Your option: """);
+
+Your option: """));
 
   # and create the appropriate type of file
   if (opt == 0):

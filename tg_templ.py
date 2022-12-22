@@ -18,6 +18,12 @@ use ieee.numeric_std.all;
 
 
 entity $entity is
+  generic (
+    -- TODO: Add generics here...
+  );
+  port (
+    -- TODO: Add ports here...
+  );
 end entity $entity;
 
 

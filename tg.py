@@ -53,8 +53,8 @@ except ImportError:
   INI_MAIL = ""
 
 
-OPT_CSRC = 2
-OPT_CHDR = 3
+OPT_CSRC = 3
+OPT_CHDR = 4
 
 # makeini function -- not used for the moment
 def makeini():
@@ -130,6 +130,67 @@ def makevhd():
 
   # and write the dictionary to the output file
   foutpname = './' + entity + '.vhd'
+  foutp = open(foutpname,'w')
+  foutp.write(hdl)
+  foutp.close()
+
+  print('New file "' + foutpname[2:] + '" created.')
+
+#===============================================================================
+# makev()
+#
+#   params:
+#     * none.
+#
+#   returns:
+#     * none; a source file is generated in the folder where TG is called from.
+#
+#   comments:
+#
+# This function generates a Verilog source (.v) file.
+#
+# The TEMPL_VERILOG constant in the tg_templ.py file is read to get a string
+# template to work on. The current date is retrieved using the stdlib gmtime()
+# function and is stored in a variable in the format YYYY-MM-DD.
+#
+# Then the user is asked to input several details from the command line. These
+# are then substituted in the string template and the appropriate file is
+# generated.
+#===============================================================================
+def makev():
+
+  # Create a string object based on the template
+  v  = Template(TEMPL_VERILOG)
+
+  # Get the current GMT in the format YYYY-MM-DD
+  date = strftime("%Y-%m-%d", gmtime())
+  year = str(gmtime().tm_year)
+
+  # Prompt the user for details relevant to the design
+  design_name = input('Verbose name of the design? ')
+
+  name = input('Company name (%s): ' % INI_NAME)
+  if (name == ""):
+    name = INI_NAME
+
+  entity = ""
+  while (entity == ""):
+    entity = input("Module name? ")
+
+  # Create a new dictionary to store the user's details for changing the template
+  d = {}
+
+  d['design_name'] = design_name
+  d['company'] = name
+  d['date']    = date
+  d['year']    = year
+  d['entity']  = entity
+
+  # Substitute the dictionary fields in the template
+  hdl = v.substitute(d)
+
+  # and write the dictionary to the output file
+  foutpname = './' + entity + '.v'
   foutp = open(foutpname,'w')
   foutp.write(hdl)
   foutp.close()
@@ -336,10 +397,11 @@ if __name__ == "__main__":
   while (opt > 4):
     opt = int(input("""Enter:
 
-  (1) for VHDL source
-  (2) for C source
-  (3) for C header
-  (4) for Python source
+  (1) to generate VHDL source file
+  (2) to generate Verilog source file
+  (3) to generate C source file
+  (4) to generate C header file
+  (5) to generate Python source file
   (0) to quit
 
 Your option: """));
@@ -349,7 +411,9 @@ Your option: """));
     pass
   elif (opt == 1):
     makevhd()
-  elif (opt == 4):
+  elif (opt == 2):
+    makev()
+  elif (opt == 5):
     makepy()
   else:
     makec(opt)
